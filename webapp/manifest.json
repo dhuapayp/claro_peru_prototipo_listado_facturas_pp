@@ -1,0 +1,130 @@
+{
+  "_version": "1.81.0",
+  "sap.app": {
+    "id": "claro.com.listadofacturas",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.1",
+      "toolsId": "3208c23a-9f33-46b7-ab8f-aa04eb89d001"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Factura-display": {
+          "semanticObject": "Factura",
+          "action": "display",
+          "title": "{{Factura-display.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.144.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.ui.layout": {},
+        "sap.ui.unified": {},
+        "sap.ui.export": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "claro.com.listadofacturas.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "claro.com.listadofacturas.view",
+        "async": true,
+        "viewPath": "claro.com.listadofacturas.view"
+      },
+      "routes": [
+        {
+          "name": "InvoiceList",
+          "pattern": "",
+          "target": [
+            "TargetInvoiceList"
+          ]
+        },
+        {
+          "name": "InvoiceDetail",
+          "pattern": "invoices/{invoiceId}",
+          "target": [
+            "TargetInvoiceDetail"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetInvoiceList": {
+          "id": "InvoiceList",
+          "name": "InvoiceList"
+        },
+        "TargetInvoiceDetail": {
+          "id": "InvoiceDetail",
+          "name": "InvoiceDetail"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "claro.com.listadofacturas.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "clarocomlistadofacturas"
+  }
+}

@@ -1,0 +1,238 @@
+<mvc:View
+    controllerName="claro.com.listadofacturas.controller.InvoiceList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    displayBlock="true">
+
+    <f:DynamicPage id="invoiceListPage" toggleHeaderOnTitleClick="true" showFooter="false">
+
+        <!-- ══ TITLE ══ -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>invoiceListTitle}" titleStyle="H3"/>
+                </f:heading>
+                <f:actions/>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- ══ HEADER: Supplier Info + KPIs ══ -->
+        <f:header>
+            <f:DynamicPageHeader>
+                <VBox>
+                    <!-- Supplier Header -->
+                    <HBox class="claro-supplier-header sapUiSmallMarginBottom" alignItems="Center" wrap="Wrap">
+                        <core:Icon src="sap-icon://building" size="2rem" color="#DA291C" class="sapUiSmallMarginEnd"/>
+                        <VBox class="sapUiSmallMarginEnd claro-label-bold">
+                            <Title text="{session>/supplierName}" titleStyle="H4"/>
+                        </VBox>
+                        <HBox alignItems="Center" class="sapUiSmallMarginEnd">
+                            <Label text="RUC:" class="sapUiTinyMarginEnd" design="Bold"/>
+                            <Text text="{session>/supplierRuc}"/>
+                        </HBox>
+                        <HBox alignItems="Center" class="sapUiSmallMarginEnd">
+                            <Text text="{session>/supplierEmail}"/>
+                        </HBox>
+                    </HBox>
+                </VBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <!-- ══ CONTENT ══ -->
+        <f:content>
+            <VBox class="sapUiSmallMargin">
+
+                <!-- Filters: SimpleForm con ColumnLayout — 4 cols desktop, 2 tablet, 1 mobile -->
+                <Panel headerText="{i18n>filters}" expandable="true" class="sapUiSmallMarginBottom">
+                    <form:SimpleForm
+                        editable="true"
+                        layout="ColumnLayout"
+                        columnsXL="4"
+                        columnsL="4"
+                        columnsM="2"
+                        class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+                        <form:content>
+                            <Label text="{i18n>invoiceNumber}"/>
+                            <Input id="filterDocNumber" placeholder="{i18n>enterDocNumber}"/>
+
+                            <Label text="{i18n>issueDateFrom}"/>
+                            <DatePicker id="filterDateFrom"/>
+
+                            <Label text="{i18n>issueDateTo}"/>
+                            <DatePicker id="filterDateTo"/>
+
+                            <Label text="{i18n>status}"/>
+                            <Select id="filterStatus">
+                                <core:Item key="" text="{i18n>all}"/>
+                                <core:Item key="Registrado" text="{i18n>statusRegistered}"/>
+                                <core:Item key="Enviado" text="{i18n>statusSent}"/>
+                                <core:Item key="Contabilizado" text="{i18n>statusPosted}"/>
+                                <core:Item key="Rechazado" text="{i18n>statusRejected}"/>
+                            </Select>
+
+                            <Label text="{i18n>paymentStatus}"/>
+                            <Select id="filterPaymentStatus">
+                                <core:Item key="" text="{i18n>all}"/>
+                                <core:Item key="Pendiente" text="{i18n>paymentPending}"/>
+                                <core:Item key="Abonado" text="{i18n>paymentPaid}"/>
+                            </Select>
+
+                            <Label text="{i18n>currency}"/>
+                            <Select id="filterCurrency">
+                                <core:Item key="" text="{i18n>all}"/>
+                                <core:Item key="PEN" text="PEN"/>
+                                <core:Item key="USD" text="USD"/>
+                            </Select>
+
+                            <Label text="&#160;" showColon="false"/>
+                            <Button text="{i18n>search}" icon="sap-icon://search" type="Emphasized" press=".onSearch" width="90%"/>
+
+                            <Label text="&#160;" showColon="false"/>
+                            <Button text="{i18n>clear}" icon="sap-icon://clear-filter" type="Transparent" press=".onClearFilters" width="90%"/>
+                        </form:content>
+                    </form:SimpleForm>
+                </Panel>
+
+                <!-- Invoice List (estilo mobile Fiori) -->
+                <Panel>
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="{i18n>invoices}" titleStyle="H5" level="H5"/>
+                            <ToolbarSpacer/>
+                            <Button text="{i18n>export}" icon="sap-icon://excel-attachment" type="Transparent" press=".onExport"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <!-- TABLA DESKTOP (oculta en mobile) -->
+                    <Table
+                        id="invoiceTable"
+                        items="{invoiceListPaged>/items}"
+                        mode="None"
+                        alternateRowColors="true"
+                        noDataText="{i18n>noInvoices}"
+                        class="claro-grid-table claro-desktop-only">
+                        <columns>
+                            <Column width="12%"><Text text="{i18n>invoiceNumber}"/></Column>
+                            <Column width="10%"><Text text="{i18n>issueDate}"/></Column>
+                            <Column width="10%"><Text text="{i18n>registerDate}"/></Column>
+                            <Column width="10%"><Text text="{i18n>status}"/></Column>
+                            <Column width="12%" hAlign="End"><Text text="{i18n>amountTotal}"/></Column>
+                            <Column width="6%"><Text text="{i18n>currency}"/></Column>
+                            <Column width="10%"><Text text="{i18n>dueDate}"/></Column>
+                            <Column width="10%"><Text text="{i18n>paymentStatus}"/></Column>
+                            <Column width="10%"><Text text="{i18n>taxIndicator}"/></Column>
+                            <Column width="10%"><Text text="{i18n>actions}"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem type="Inactive" press=".onItemPress">
+                                <cells>
+                                    <Text text="{= ${invoiceListPaged>Series} + '-' + ${invoiceListPaged>DocNumber} }"/>
+                                    <Text text="{path: 'invoiceListPaged>IssueDate', formatter: '.formatter.dateFormat'}"/>
+                                    <Text text="{path: 'invoiceListPaged>RegisterDate', formatter: '.formatter.dateFormat'}"/>
+                                    <ObjectStatus
+                                        text="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusText'}"
+                                        state="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusState'}"
+                                        icon="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusIcon'}"/>
+                                    <ObjectNumber
+                                        number="{path: 'invoiceListPaged>AmountTotal', formatter: '.formatter.numberFormat'}"
+                                        unit="{invoiceListPaged>Currency}"
+                                        class="claro-amount-value"/>
+                                    <Text text="{invoiceListPaged>Currency}"/>
+                                    <Text text="{path: 'invoiceListPaged>DueDate', formatter: '.formatter.dateFormat'}"/>
+                                    <ObjectStatus
+                                        text="{path: 'invoiceListPaged>PaymentStatus', formatter: '.formatter.paymentStatusText'}"
+                                        state="{path: 'invoiceListPaged>PaymentStatus', formatter: '.formatter.paymentStatusState'}"
+                                        icon="{path: 'invoiceListPaged>PaymentStatus', formatter: '.formatter.paymentStatusIcon'}"/>
+                                    <Text text="{path: 'invoiceListPaged>TaxIndicator', formatter: '.formatter.taxIndicatorText'}"/>
+                                    <HBox>
+                                        <Button icon="sap-icon://display" type="Transparent" press=".onViewDetail" tooltip="{i18n>viewDetail}"/>
+                                        <Button icon="sap-icon://edit" type="Transparent" press=".onEditInvoice" tooltip="{i18n>edit}"
+                                            visible="{path: 'invoiceListPaged>Status', formatter: '.formatter.canEdit'}"/>
+                                        <Button icon="sap-icon://delete" type="Transparent" press=".onDeleteInvoice" tooltip="{i18n>delete}"
+                                            visible="{path: 'invoiceListPaged>Status', formatter: '.formatter.canDelete'}"/>
+                                    </HBox>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+
+                    <!-- LISTA MOBILE (oculta en desktop) -->
+                    <List
+                        id="invoiceMobileList"
+                        items="{invoiceListPaged>/items}"
+                        noDataText="{i18n>noInvoices}"
+                        mode="None"
+                        showSeparators="Inner"
+                        class="claro-mobile-only">
+                        <items>
+                            <CustomListItem type="Inactive" class="claro-list-item">
+                                <VBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom">
+                                    <!-- Fila 1: Número de factura + Importe -->
+                                    <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
+                                        <Title text="{= ${invoiceListPaged>Series} + '-' + ${invoiceListPaged>DocNumber} }" titleStyle="H6" level="H6"/>
+                                        <ObjectNumber
+                                            number="{path: 'invoiceListPaged>AmountTotal', formatter: '.formatter.numberFormat'}"
+                                            unit="{invoiceListPaged>Currency}"
+                                            emphasized="true"/>
+                                    </HBox>
+                                    <!-- Fila 2: Estado factura + Estado pago -->
+                                    <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                        <ObjectStatus
+                                            text="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusText'}"
+                                            state="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusState'}"
+                                            icon="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusIcon'}"
+                                            class="sapUiSmallMarginEnd"/>
+                                        <ObjectStatus
+                                            text="{path: 'invoiceListPaged>PaymentStatus', formatter: '.formatter.paymentStatusText'}"
+                                            state="{path: 'invoiceListPaged>PaymentStatus', formatter: '.formatter.paymentStatusState'}"
+                                            icon="{path: 'invoiceListPaged>PaymentStatus', formatter: '.formatter.paymentStatusIcon'}"/>
+                                    </HBox>
+                                    <!-- Fila 3: Fechas + Indicador fiscal -->
+                                    <HBox wrap="Wrap" alignItems="Center" class="sapUiTinyMarginBottom">
+                                        <ObjectAttribute title="{i18n>issueDate}" text="{path: 'invoiceListPaged>IssueDate', formatter: '.formatter.dateFormat'}" class="sapUiSmallMarginEnd"/>
+                                        <ObjectAttribute title="{i18n>dueDate}" text="{path: 'invoiceListPaged>DueDate', formatter: '.formatter.dateFormat'}" class="sapUiSmallMarginEnd"/>
+                                        <ObjectAttribute title="{i18n>taxIndicator}" text="{path: 'invoiceListPaged>TaxIndicator', formatter: '.formatter.taxIndicatorText'}"/>
+                                    </HBox>
+                                    <!-- Fila 4: Acciones -->
+                                    <HBox alignItems="Center">
+                                        <Button icon="sap-icon://display" type="Transparent" press=".onViewDetail" tooltip="{i18n>viewDetail}"/>
+                                        <Button icon="sap-icon://edit" type="Transparent" press=".onEditInvoice" tooltip="{i18n>edit}"
+                                            visible="{path: 'invoiceListPaged>Status', formatter: '.formatter.canEdit'}"/>
+                                        <Button icon="sap-icon://delete" type="Transparent" press=".onDeleteInvoice" tooltip="{i18n>delete}"
+                                            visible="{path: 'invoiceListPaged>Status', formatter: '.formatter.canDelete'}"/>
+                                    </HBox>
+                                </VBox>
+                            </CustomListItem>
+                        </items>
+                    </List>
+                    <Toolbar class="claro-pagination-bar">
+                        <Button text="«" tooltip="Primera página"
+                            press=".onInvoiceFirstPage"
+                            enabled="{= ${viewModel>/invoicePage} > 1 }"
+                            class="claro-pagination-btn"/>
+                        <Button icon="sap-icon://navigation-left-arrow" tooltip="Anterior"
+                            press=".onInvoicePrevPage"
+                            enabled="{= ${viewModel>/invoicePage} > 1 }"
+                            class="claro-pagination-btn"/>
+                        <ToolbarSpacer/>
+                        <Text
+                            text="{= 'Página ' + ${viewModel>/invoicePage} + ' de ' + ${viewModel>/invoiceTotalPages} + ' | ' + ${viewModel>/invoiceTotal} + ' registros' }"
+                            class="claro-page-info"/>
+                        <ToolbarSpacer/>
+                        <Button icon="sap-icon://navigation-right-arrow" tooltip="Siguiente"
+                            press=".onInvoiceNextPage"
+                            enabled="{= ${viewModel>/invoicePage} &lt; ${viewModel>/invoiceTotalPages} }"
+                            class="claro-pagination-btn"/>
+                        <Button text="»" tooltip="Última página"
+                            press=".onInvoiceLastPage"
+                            enabled="{= ${viewModel>/invoicePage} &lt; ${viewModel>/invoiceTotalPages} }"
+                            class="claro-pagination-btn"/>
+                    </Toolbar>
+                </Panel>
+
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

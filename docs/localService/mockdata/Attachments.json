@@ -1,0 +1,22 @@
+[
+  { "InvoiceId": "INV001", "AttachmentId": "ATT00101", "Type": "XML", "FileName": "F001-00012345.xml", "MimeType": "application/xml", "Url": "/docs/xml/F001-00012345.xml" },
+  { "InvoiceId": "INV001", "AttachmentId": "ATT00102", "Type": "PDF", "FileName": "F001-00012345.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F001-00012345.pdf" },
+  { "InvoiceId": "INV002", "AttachmentId": "ATT00201", "Type": "XML", "FileName": "F001-00012346.xml", "MimeType": "application/xml", "Url": "/docs/xml/F001-00012346.xml" },
+  { "InvoiceId": "INV002", "AttachmentId": "ATT00202", "Type": "PDF", "FileName": "F001-00012346.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F001-00012346.pdf" },
+  { "InvoiceId": "INV003", "AttachmentId": "ATT00301", "Type": "XML", "FileName": "F001-00012347.xml", "MimeType": "application/xml", "Url": "/docs/xml/F001-00012347.xml" },
+  { "InvoiceId": "INV003", "AttachmentId": "ATT00302", "Type": "PDF", "FileName": "F001-00012347.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F001-00012347.pdf" },
+  { "InvoiceId": "INV004", "AttachmentId": "ATT00401", "Type": "XML", "FileName": "F002-00012348.xml", "MimeType": "application/xml", "Url": "/docs/xml/F002-00012348.xml" },
+  { "InvoiceId": "INV004", "AttachmentId": "ATT00402", "Type": "PDF", "FileName": "F002-00012348.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F002-00012348.pdf" },
+  { "InvoiceId": "INV005", "AttachmentId": "ATT00501", "Type": "XML", "FileName": "F001-00012349.xml", "MimeType": "application/xml", "Url": "/docs/xml/F001-00012349.xml" },
+  { "InvoiceId": "INV005", "AttachmentId": "ATT00502", "Type": "PDF", "FileName": "F001-00012349.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F001-00012349.pdf" },
+  { "InvoiceId": "INV006", "AttachmentId": "ATT00601", "Type": "XML", "FileName": "F002-00012350.xml", "MimeType": "application/xml", "Url": "/docs/xml/F002-00012350.xml" },
+  { "InvoiceId": "INV006", "AttachmentId": "ATT00602", "Type": "PDF", "FileName": "F002-00012350.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F002-00012350.pdf" },
+  { "InvoiceId": "INV007", "AttachmentId": "ATT00701", "Type": "XML", "FileName": "F001-00012351.xml", "MimeType": "application/xml", "Url": "/docs/xml/F001-00012351.xml" },
+  { "InvoiceId": "INV007", "AttachmentId": "ATT00702", "Type": "PDF", "FileName": "F001-00012351.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F001-00012351.pdf" },
+  { "InvoiceId": "INV008", "AttachmentId": "ATT00801", "Type": "XML", "FileName": "F001-00012352.xml", "MimeType": "application/xml", "Url": "/docs/xml/F001-00012352.xml" },
+  { "InvoiceId": "INV008", "AttachmentId": "ATT00802", "Type": "PDF", "FileName": "F001-00012352.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F001-00012352.pdf" },
+  { "InvoiceId": "INV009", "AttachmentId": "ATT00901", "Type": "XML", "FileName": "F003-00012353.xml", "MimeType": "application/xml", "Url": "/docs/xml/F003-00012353.xml" },
+  { "InvoiceId": "INV009", "AttachmentId": "ATT00902", "Type": "PDF", "FileName": "F003-00012353.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F003-00012353.pdf" },
+  { "InvoiceId": "INV010", "AttachmentId": "ATT01001", "Type": "XML", "FileName": "F001-00012354.xml", "MimeType": "application/xml", "Url": "/docs/xml/F001-00012354.xml" },
+  { "InvoiceId": "INV010", "AttachmentId": "ATT01002", "Type": "PDF", "FileName": "F001-00012354.pdf", "MimeType": "application/pdf", "Url": "/docs/pdf/F001-00012354.pdf" }
+]

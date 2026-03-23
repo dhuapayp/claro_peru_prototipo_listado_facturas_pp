@@ -1,0 +1,409 @@
+{
+  "INV001": {
+    "comprobante": {
+      "tipoDocumento": "01",
+      "tipoFactura": "ELECTRONICO",
+      "serieDocumento": "F001",
+      "numeroDocumento": "00012345",
+      "fechaEmision": "2026-01-15",
+      "fechaRecepcion": "2026-01-16",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "PEN",
+      "indicadorIGV": true,
+      "importeBase": 24568.14,
+      "montoIGV": 4422.27,
+      "montoInafecto": 0,
+      "montoTotal": 28990.41,
+      "porcentajeDetraccion": 0,
+      "montoDetraccion": 0,
+      "importeNeto": 28120.70,
+      "periodoMes": "01",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "CONTRATO",
+      "tipoDocumentoDesc": "Contrato",
+      "numeroDocumento": "CTR-2026-001"
+    },
+    "contrato": {
+      "numeroContrato": "CTR-2026-001",
+      "conceptos": [
+        { "id": "C001", "codigo": "ALQ-001", "concepto": "Alquiler de Inmueble" },
+        { "id": "C002", "codigo": "GC-001", "concepto": "Gastos Comunes" },
+        { "id": "C003", "codigo": "MNT-001", "concepto": "Mantenimiento Preventivo" }
+      ]
+    },
+    "programacion": [
+      { "conceptoPago": "Alquiler de Inmueble", "tipoUndNegocio": "Lima Norte", "frecuencia": "Mensual", "fechaInicio": "2026-01-01", "fechaFin": "2026-01-31", "monedaProg": "PEN", "importeProgramado": 15000.00, "monedaPago": "PEN", "importePagado": 15000.00 },
+      { "conceptoPago": "Alquiler de Inmueble", "tipoUndNegocio": "Lima Centro", "frecuencia": "Mensual", "fechaInicio": "2026-01-01", "fechaFin": "2026-01-31", "monedaProg": "PEN", "importeProgramado": 8200.00, "monedaPago": "PEN", "importePagado": 8200.00 },
+      { "conceptoPago": "Gastos Comunes", "tipoUndNegocio": "Lima Norte", "frecuencia": "Mensual", "fechaInicio": "2026-01-01", "fechaFin": "2026-01-31", "monedaProg": "PEN", "importeProgramado": 1368.14, "monedaPago": "PEN", "importePagado": 1368.14 }
+    ],
+    "pendientesFact": [
+      { "mesPago": "ENE-2026", "fechaInicio": "2026-01-01", "fechaFin": "2026-01-31", "moneda": "PEN", "valorVenta": "15000.00", "igv": "2700.00", "inafecto": "0.00", "total": "17700.00", "cuentaContable": "6311010100", "descripcionCtaContable": "Alquileres de terrenos", "consumo": "100", "glosaPago": "Alquiler ENE-26 Lima Norte", "conceptoPago": "Alquiler de Inmueble", "nroFactura": "F001-00012345", "asignado": true },
+      { "mesPago": "ENE-2026", "fechaInicio": "2026-01-01", "fechaFin": "2026-01-31", "moneda": "PEN", "valorVenta": "8200.00", "igv": "1476.00", "inafecto": "0.00", "total": "9676.00", "cuentaContable": "6311010100", "descripcionCtaContable": "Alquileres de terrenos", "consumo": "100", "glosaPago": "Alquiler ENE-26 Lima Centro", "conceptoPago": "Alquiler de Inmueble", "nroFactura": "F001-00012345", "asignado": true },
+      { "mesPago": "ENE-2026", "fechaInicio": "2026-01-01", "fechaFin": "2026-01-31", "moneda": "PEN", "valorVenta": "1368.14", "igv": "246.27", "inafecto": "0.00", "total": "1614.41", "cuentaContable": "6311010200", "descripcionCtaContable": "Gastos comunes inmuebles", "consumo": "100", "glosaPago": "Gastos Comunes ENE-26 Lima Norte", "conceptoPago": "Gastos Comunes", "nroFactura": "F001-00012345", "asignado": true }
+    ]
+  },
+  "INV002": {
+    "comprobante": {
+      "tipoDocumento": "01",
+      "tipoFactura": "ELECTRONICO",
+      "serieDocumento": "F001",
+      "numeroDocumento": "00012346",
+      "fechaEmision": "2026-01-28",
+      "fechaRecepcion": "2026-01-29",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "PEN",
+      "indicadorIGV": true,
+      "importeBase": 13153.81,
+      "montoIGV": 2367.69,
+      "montoInafecto": 0,
+      "montoTotal": 15521.50,
+      "porcentajeDetraccion": 12,
+      "montoDetraccion": 1862.58,
+      "importeNeto": 13658.92,
+      "periodoMes": "01",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "OC",
+      "tipoDocumentoDesc": "Orden de Compra",
+      "numeroDocumento": "OC-2026-001"
+    },
+    "posiciones": [
+      { "posicion": "0010", "codigoServicio": "SRV-TI-001", "descripcion": "Consultoría en Arquitectura de Software", "cantidad": 1, "unidadMedida": "SER", "importe": 6576.91, "moneda": "PEN", "estado": "FACTURADO", "estadoDesc": "Facturado", "asignado": true },
+      { "posicion": "0020", "codigoServicio": "SRV-TI-002", "descripcion": "Desarrollo de Interfaces SAP PI/PO", "cantidad": 1, "unidadMedida": "SER", "importe": 4389.30, "moneda": "PEN", "estado": "FACTURADO", "estadoDesc": "Facturado", "asignado": true },
+      { "posicion": "0030", "codigoServicio": "SRV-TI-003", "descripcion": "Testing y Control de Calidad", "cantidad": 1, "unidadMedida": "SER", "importe": 2187.60, "moneda": "PEN", "estado": "FACTURADO", "estadoDesc": "Facturado", "asignado": true }
+    ]
+  },
+  "INV003": {
+    "comprobante": {
+      "tipoDocumento": "01",
+      "tipoFactura": "ELECTRONICO",
+      "serieDocumento": "F001",
+      "numeroDocumento": "00012347",
+      "fechaEmision": "2026-02-10",
+      "fechaRecepcion": "2026-02-11",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "PEN",
+      "indicadorIGV": true,
+      "importeBase": 20617.59,
+      "montoIGV": 3711.17,
+      "montoInafecto": 0,
+      "montoTotal": 24328.76,
+      "porcentajeDetraccion": 0,
+      "montoDetraccion": 0,
+      "importeNeto": 24328.76,
+      "periodoMes": "02",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "CONTRATO",
+      "tipoDocumentoDesc": "Contrato",
+      "numeroDocumento": "CTR-2026-002"
+    },
+    "contrato": {
+      "numeroContrato": "CTR-2026-002",
+      "conceptos": [
+        { "id": "C010", "codigo": "SRV-001", "concepto": "Servicios Generales" },
+        { "id": "C011", "codigo": "LIM-001", "concepto": "Servicios de Limpieza" }
+      ]
+    },
+    "programacion": [
+      { "conceptoPago": "Servicios Generales", "tipoUndNegocio": "Arequipa Centro", "frecuencia": "Mensual", "fechaInicio": "2026-02-01", "fechaFin": "2026-02-28", "monedaProg": "PEN", "importeProgramado": 12500.00, "monedaPago": "PEN", "importePagado": 12500.00 },
+      { "conceptoPago": "Servicios Generales", "tipoUndNegocio": "Arequipa Norte", "frecuencia": "Mensual", "fechaInicio": "2026-02-01", "fechaFin": "2026-02-28", "monedaProg": "PEN", "importeProgramado": 5200.00, "monedaPago": "PEN", "importePagado": 5200.00 },
+      { "conceptoPago": "Servicios de Limpieza", "tipoUndNegocio": "Arequipa Centro", "frecuencia": "Mensual", "fechaInicio": "2026-02-01", "fechaFin": "2026-02-28", "monedaProg": "PEN", "importeProgramado": 2917.59, "monedaPago": "PEN", "importePagado": 2917.59 }
+    ],
+    "pendientesFact": [
+      { "mesPago": "FEB-2026", "fechaInicio": "2026-02-01", "fechaFin": "2026-02-28", "moneda": "PEN", "valorVenta": "12500.00", "igv": "2250.00", "inafecto": "0.00", "total": "14750.00", "cuentaContable": "6311010300", "descripcionCtaContable": "Servicios inmobiliarios", "consumo": "100", "glosaPago": "Servicios Generales FEB-26 Arequipa Centro", "conceptoPago": "Servicios Generales", "nroFactura": "F001-00012347", "asignado": true },
+      { "mesPago": "FEB-2026", "fechaInicio": "2026-02-01", "fechaFin": "2026-02-28", "moneda": "PEN", "valorVenta": "5200.00", "igv": "936.00", "inafecto": "0.00", "total": "6136.00", "cuentaContable": "6311010300", "descripcionCtaContable": "Servicios inmobiliarios", "consumo": "100", "glosaPago": "Servicios Generales FEB-26 Arequipa Norte", "conceptoPago": "Servicios Generales", "nroFactura": "F001-00012347", "asignado": true },
+      { "mesPago": "FEB-2026", "fechaInicio": "2026-02-01", "fechaFin": "2026-02-28", "moneda": "PEN", "valorVenta": "2917.59", "igv": "525.17", "inafecto": "0.00", "total": "3442.76", "cuentaContable": "6321010200", "descripcionCtaContable": "Servicios de limpieza", "consumo": "100", "glosaPago": "Limpieza FEB-26 Arequipa Centro", "conceptoPago": "Servicios de Limpieza", "nroFactura": "F001-00012347", "asignado": true }
+    ]
+  },
+  "INV004": {
+    "comprobante": {
+      "tipoDocumento": "01",
+      "tipoFactura": "ELECTRONICO",
+      "serieDocumento": "F002",
+      "numeroDocumento": "00012348",
+      "fechaEmision": "2026-02-20",
+      "fechaRecepcion": "2026-02-21",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "USD",
+      "indicadorIGV": true,
+      "importeBase": 32372.88,
+      "montoIGV": 5827.12,
+      "montoInafecto": 0,
+      "montoTotal": 38200.00,
+      "porcentajeDetraccion": 0,
+      "montoDetraccion": 0,
+      "importeNeto": 37054.00,
+      "periodoMes": "02",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "OC",
+      "tipoDocumentoDesc": "Orden de Compra",
+      "numeroDocumento": "OC-2026-002"
+    },
+    "posiciones": [
+      { "posicion": "0010", "codigoServicio": "SRV-INT-001", "descripcion": "Consultoría SAP S/4HANA - Módulo FI", "cantidad": 160, "unidadMedida": "HRS", "importe": 16000.00, "moneda": "USD", "estado": "FACTURADO", "estadoDesc": "Facturado", "asignado": true },
+      { "posicion": "0020", "codigoServicio": "SRV-INT-002", "descripcion": "Consultoría SAP S/4HANA - Módulo MM", "cantidad": 120, "unidadMedida": "HRS", "importe": 12000.00, "moneda": "USD", "estado": "FACTURADO", "estadoDesc": "Facturado", "asignado": true },
+      { "posicion": "0030", "codigoServicio": "SRV-INT-003", "descripcion": "Gestión de Proyecto y PMO", "cantidad": 1, "unidadMedida": "SER", "importe": 4372.88, "moneda": "USD", "estado": "FACTURADO", "estadoDesc": "Facturado", "asignado": true }
+    ]
+  },
+  "INV005": {
+    "comprobante": {
+      "tipoDocumento": "01",
+      "tipoFactura": "ELECTRONICO",
+      "serieDocumento": "F001",
+      "numeroDocumento": "00012349",
+      "fechaEmision": "2026-03-01",
+      "fechaRecepcion": "2026-03-02",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "PEN",
+      "indicadorIGV": true,
+      "importeBase": 10551.52,
+      "montoIGV": 1899.28,
+      "montoInafecto": 0,
+      "montoTotal": 12450.80,
+      "porcentajeDetraccion": 0,
+      "montoDetraccion": 0,
+      "importeNeto": 12077.28,
+      "periodoMes": "03",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "CONTRATO",
+      "tipoDocumentoDesc": "Contrato",
+      "numeroDocumento": "CTR-2026-003"
+    },
+    "contrato": {
+      "numeroContrato": "CTR-2026-003",
+      "conceptos": [
+        { "id": "C020", "codigo": "MNT-002", "concepto": "Mantenimiento Preventivo" },
+        { "id": "C021", "codigo": "MNT-003", "concepto": "Mantenimiento Correctivo" }
+      ]
+    },
+    "programacion": [
+      { "conceptoPago": "Mantenimiento Preventivo", "tipoUndNegocio": "Sede Central", "frecuencia": "Mensual", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "monedaProg": "PEN", "importeProgramado": 7500.00, "monedaPago": null, "importePagado": null },
+      { "conceptoPago": "Mantenimiento Correctivo", "tipoUndNegocio": "Sede Central", "frecuencia": "Mensual", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "monedaProg": "PEN", "importeProgramado": 3051.52, "monedaPago": null, "importePagado": null }
+    ],
+    "pendientesFact": [
+      { "mesPago": "MAR-2026", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "moneda": "PEN", "valorVenta": "7500.00", "igv": "1350.00", "inafecto": "0.00", "total": "8850.00", "cuentaContable": "6321010100", "descripcionCtaContable": "Mantenimiento edificios", "consumo": "100", "glosaPago": "Mantenimiento Preventivo MAR-26 Sede Central", "conceptoPago": "Mantenimiento Preventivo", "nroFactura": "F001-00012349", "asignado": true },
+      { "mesPago": "MAR-2026", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "moneda": "PEN", "valorVenta": "3051.52", "igv": "549.28", "inafecto": "0.00", "total": "3600.80", "cuentaContable": "6321010200", "descripcionCtaContable": "Mantenimiento correctivo", "consumo": "100", "glosaPago": "Mantenimiento Correctivo MAR-26 Sede Central", "conceptoPago": "Mantenimiento Correctivo", "nroFactura": "F001-00012349", "asignado": true }
+    ]
+  },
+  "INV006": {
+    "comprobante": {
+      "tipoDocumento": "01",
+      "tipoFactura": "ELECTRONICO",
+      "serieDocumento": "F002",
+      "numeroDocumento": "00012350",
+      "fechaEmision": "2026-03-05",
+      "fechaRecepcion": "2026-03-06",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "USD",
+      "indicadorIGV": true,
+      "importeBase": 19279.66,
+      "montoIGV": 3470.34,
+      "montoInafecto": 0,
+      "montoTotal": 22750.00,
+      "porcentajeDetraccion": 12,
+      "montoDetraccion": 2730.00,
+      "importeNeto": 20020.00,
+      "periodoMes": "03",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "OC",
+      "tipoDocumentoDesc": "Orden de Compra",
+      "numeroDocumento": "OC-2026-003"
+    },
+    "posiciones": [
+      { "posicion": "0010", "codigoServicio": "EQ-DC-001", "descripcion": "Rack de Servidores 42U", "cantidad": 3, "unidadMedida": "UND", "importe": 8400.00, "moneda": "USD", "estado": "FACTURADO", "estadoDesc": "Facturado", "asignado": true },
+      { "posicion": "0020", "codigoServicio": "EQ-DC-002", "descripcion": "UPS Industrial 10KVA", "cantidad": 2, "unidadMedida": "UND", "importe": 5600.00, "moneda": "USD", "estado": "FACTURADO", "estadoDesc": "Facturado", "asignado": true },
+      { "posicion": "0030", "codigoServicio": "EQ-DC-003", "descripcion": "Sistema de Aire Acondicionado Precision", "cantidad": 1, "unidadMedida": "UND", "importe": 3500.00, "moneda": "USD", "estado": "PENDIENTE", "estadoDesc": "Pendiente", "asignado": false },
+      { "posicion": "0040", "codigoServicio": "SRV-DC-001", "descripcion": "Instalación y Configuración", "cantidad": 1, "unidadMedida": "SER", "importe": 1779.66, "moneda": "USD", "estado": "PENDIENTE", "estadoDesc": "Pendiente", "asignado": false }
+    ]
+  },
+  "INV007": {
+    "comprobante": {
+      "tipoDocumento": "01",
+      "tipoFactura": "ELECTRONICO",
+      "serieDocumento": "F001",
+      "numeroDocumento": "00012351",
+      "fechaEmision": "2026-03-10",
+      "fechaRecepcion": "2026-03-11",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "PEN",
+      "indicadorIGV": true,
+      "importeBase": 7593.22,
+      "montoIGV": 1366.78,
+      "montoInafecto": 0,
+      "montoTotal": 8960.00,
+      "porcentajeDetraccion": 0,
+      "montoDetraccion": 0,
+      "importeNeto": 8960.00,
+      "periodoMes": "03",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "CONTRATO",
+      "tipoDocumentoDesc": "Contrato",
+      "numeroDocumento": "CTR-2026-004"
+    },
+    "contrato": {
+      "numeroContrato": "CTR-2026-004",
+      "conceptos": [
+        { "id": "C030", "codigo": "SEG-001", "concepto": "Vigilancia y Seguridad" },
+        { "id": "C031", "codigo": "SEG-002", "concepto": "Monitoreo CCTV" }
+      ]
+    },
+    "programacion": [
+      { "conceptoPago": "Vigilancia y Seguridad", "tipoUndNegocio": "Sede Principal", "frecuencia": "Mensual", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "monedaProg": "PEN", "importeProgramado": 5500.00, "monedaPago": null, "importePagado": null },
+      { "conceptoPago": "Monitoreo CCTV", "tipoUndNegocio": "Sede Principal", "frecuencia": "Mensual", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "monedaProg": "PEN", "importeProgramado": 2093.22, "monedaPago": null, "importePagado": null },
+      { "conceptoPago": "Vigilancia y Seguridad", "tipoUndNegocio": "Sede Principal", "frecuencia": "Mensual", "fechaInicio": "2026-04-01", "fechaFin": "2026-04-30", "monedaProg": "PEN", "importeProgramado": 5500.00, "monedaPago": null, "importePagado": null }
+    ],
+    "pendientesFact": [
+      { "mesPago": "MAR-2026", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "moneda": "PEN", "valorVenta": "5500.00", "igv": "990.00", "inafecto": "0.00", "total": "6490.00", "cuentaContable": "6351010100", "descripcionCtaContable": "Servicio de vigilancia", "consumo": "100", "glosaPago": "Vigilancia MAR-26 Sede Principal", "conceptoPago": "Vigilancia y Seguridad", "nroFactura": null, "asignado": false },
+      { "mesPago": "MAR-2026", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "moneda": "PEN", "valorVenta": "2093.22", "igv": "376.78", "inafecto": "0.00", "total": "2470.00", "cuentaContable": "6351010200", "descripcionCtaContable": "Monitoreo y CCTV", "consumo": "100", "glosaPago": "Monitoreo CCTV MAR-26 Sede Principal", "conceptoPago": "Monitoreo CCTV", "nroFactura": null, "asignado": false },
+      { "mesPago": "ABR-2026", "fechaInicio": "2026-04-01", "fechaFin": "2026-04-30", "moneda": "PEN", "valorVenta": "5500.00", "igv": "990.00", "inafecto": "0.00", "total": "6490.00", "cuentaContable": "6351010100", "descripcionCtaContable": "Servicio de vigilancia", "consumo": "0", "glosaPago": "Vigilancia ABR-26 Sede Principal", "conceptoPago": "Vigilancia y Seguridad", "nroFactura": null, "asignado": false }
+    ]
+  },
+  "INV008": {
+    "comprobante": {
+      "tipoDocumento": "07",
+      "tipoFactura": "ELECTRONICO",
+      "serieDocumento": "F001",
+      "numeroDocumento": "00012352",
+      "fechaEmision": "2026-03-12",
+      "fechaRecepcion": "2026-03-13",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "PEN",
+      "indicadorIGV": true,
+      "importeBase": 2712.29,
+      "montoIGV": 488.21,
+      "montoInafecto": 0,
+      "montoTotal": 3200.50,
+      "porcentajeDetraccion": 0,
+      "montoDetraccion": 0,
+      "importeNeto": 3104.48,
+      "periodoMes": "03",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "OC",
+      "tipoDocumentoDesc": "Orden de Compra",
+      "numeroDocumento": "OC-2026-004"
+    },
+    "posiciones": [
+      { "posicion": "0010", "codigoServicio": "SRV-LIM-001", "descripcion": "Servicio de Limpieza General - Piso 1", "cantidad": 1, "unidadMedida": "SER", "importe": 1356.15, "moneda": "PEN", "estado": "PENDIENTE", "estadoDesc": "Pendiente", "asignado": false },
+      { "posicion": "0020", "codigoServicio": "SRV-LIM-002", "descripcion": "Servicio de Limpieza General - Piso 2", "cantidad": 1, "unidadMedida": "SER", "importe": 1356.14, "moneda": "PEN", "estado": "PENDIENTE", "estadoDesc": "Pendiente", "asignado": false }
+    ]
+  },
+  "INV009": {
+    "comprobante": {
+      "tipoDocumento": "01",
+      "tipoFactura": "FISICO",
+      "serieDocumento": "F003",
+      "numeroDocumento": "00012353",
+      "fechaEmision": "2026-03-15",
+      "fechaRecepcion": "2026-03-16",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "USD",
+      "indicadorIGV": true,
+      "importeBase": 38644.07,
+      "montoIGV": 6955.93,
+      "montoInafecto": 0,
+      "montoTotal": 45600.00,
+      "porcentajeDetraccion": 12,
+      "montoDetraccion": 5472.00,
+      "importeNeto": 40128.00,
+      "periodoMes": "03",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "CONTRATO",
+      "tipoDocumentoDesc": "Contrato",
+      "numeroDocumento": "CTR-2026-005"
+    },
+    "contrato": {
+      "numeroContrato": "CTR-2026-005",
+      "conceptos": [
+        { "id": "C040", "codigo": "ALQ-DC-001", "concepto": "Alquiler Data Center" },
+        { "id": "C041", "codigo": "ENE-DC-001", "concepto": "Suministro de Energía" }
+      ]
+    },
+    "programacion": [
+      { "conceptoPago": "Alquiler Data Center", "tipoUndNegocio": "Chiclayo", "frecuencia": "Mensual", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "monedaProg": "USD", "importeProgramado": 28000.00, "monedaPago": null, "importePagado": null },
+      { "conceptoPago": "Suministro de Energía", "tipoUndNegocio": "Chiclayo", "frecuencia": "Mensual", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "monedaProg": "USD", "importeProgramado": 10644.07, "monedaPago": null, "importePagado": null }
+    ],
+    "pendientesFact": [
+      { "mesPago": "MAR-2026", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "moneda": "USD", "valorVenta": "28000.00", "igv": "5040.00", "inafecto": "0.00", "total": "33040.00", "cuentaContable": "6311020100", "descripcionCtaContable": "Alquiler data center", "consumo": "100", "glosaPago": "Alquiler DC MAR-26 Chiclayo", "conceptoPago": "Alquiler Data Center", "nroFactura": null, "asignado": false },
+      { "mesPago": "MAR-2026", "fechaInicio": "2026-03-01", "fechaFin": "2026-03-31", "moneda": "USD", "valorVenta": "10644.07", "igv": "1915.93", "inafecto": "0.00", "total": "12560.00", "cuentaContable": "6311020200", "descripcionCtaContable": "Suministro energía DC", "consumo": "100", "glosaPago": "Energía DC MAR-26 Chiclayo", "conceptoPago": "Suministro de Energía", "nroFactura": null, "asignado": false }
+    ]
+  },
+  "INV010": {
+    "comprobante": {
+      "tipoDocumento": "08",
+      "tipoFactura": "ELECTRONICO",
+      "serieDocumento": "F001",
+      "numeroDocumento": "00012354",
+      "fechaEmision": "2026-03-18",
+      "fechaRecepcion": "2026-03-19",
+      "rucEmisor": "20100130204",
+      "razonSocialEmisor": "INMOBILIARIA PERU SAC",
+      "rucReceptor": "20467534026",
+      "razonSocialReceptor": "AMERICA MOVIL PERU SAC",
+      "moneda": "PEN",
+      "indicadorIGV": true,
+      "importeBase": 1567.80,
+      "montoIGV": 282.20,
+      "montoInafecto": 0,
+      "montoTotal": 1850.00,
+      "porcentajeDetraccion": 0,
+      "montoDetraccion": 0,
+      "importeNeto": 1850.00,
+      "periodoMes": "03",
+      "periodoAnio": "2026"
+    },
+    "detalle": {
+      "tipoDocumento": "OC",
+      "tipoDocumentoDesc": "Orden de Compra",
+      "numeroDocumento": "OC-2026-005"
+    },
+    "posiciones": [
+      { "posicion": "0010", "codigoServicio": "MAT-OF-001", "descripcion": "Papel Bond A4 75g - Caja x 10 resmas", "cantidad": 5, "unidadMedida": "CAJ", "importe": 625.00, "moneda": "PEN", "estado": "PENDIENTE", "estadoDesc": "Pendiente", "asignado": false },
+      { "posicion": "0020", "codigoServicio": "MAT-OF-002", "descripcion": "Toner HP LaserJet Pro - Negro", "cantidad": 8, "unidadMedida": "UND", "importe": 640.00, "moneda": "PEN", "estado": "PENDIENTE", "estadoDesc": "Pendiente", "asignado": false },
+      { "posicion": "0030", "codigoServicio": "MAT-OF-003", "descripcion": "Material de escritorio diverso", "cantidad": 1, "unidadMedida": "LOT", "importe": 302.80, "moneda": "PEN", "estado": "PENDIENTE", "estadoDesc": "Pendiente", "asignado": false }
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+    
+    <Dialog
+        id="paymentDetailDialog"
+        title="{i18n>paymentDetail}"
+        contentWidth="60%">
+        
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <MessageStrip
+                    text="{i18n>paymentInformation}"
+                    type="Information"
+                    showIcon="true"
+                    class="sapUiSmallMarginBottom"
+                    visible="{= ${detail>/PaymentDetails}.length > 0}"/>
+                
+                <MessageStrip
+                    text="{i18n>noPaymentRegistered}"
+                    type="Warning"
+                    showIcon="true"
+                    class="sapUiSmallMarginBottom"
+                    visible="{= ${detail>/PaymentDetails}.length === 0}"/>
+                
+                <VBox visible="{= ${detail>/PaymentDetails}.length === 0}">
+                    <Label text="{i18n>approxPaymentDate}"/>
+                    <Text text="{path: 'detail>/invoice/ApproxPaymentDate', formatter: '.formatter.dateFormat'}"/>
+                </VBox>
+                
+                <Table
+                    items="{detail>/PaymentDetails}"
+                    visible="{= ${detail>/PaymentDetails}.length > 0}">
+                    <columns>
+                        <Column><Text text="{i18n>paymentDoc}"/></Column>
+                        <Column><Text text="{i18n>paymentDate}"/></Column>
+                        <Column><Text text="{i18n>voucher}"/></Column>
+                        <Column hAlign="End"><Text text="{i18n>netPaidAmount}"/></Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{detail>PaymentDoc}"/>
+                                <Text text="{path: 'detail>PaymentDate', formatter: '.formatter.dateFormat'}"/>
+                                <Text text="{detail>Voucher}"/>
+                                <ObjectNumber
+                                    number="{detail>NetPaidAmount}"
+                                    state="Success"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                
+                <VBox visible="{= ${detail>/PaymentDetails}.length > 0}" class="sapUiSmallMarginTop">
+                    <form:SimpleForm
+                        editable="false"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="1">
+                        <form:content>
+                            <Label text="{i18n>paymentMethod}"/>
+                            <Text text="{detail>/PaymentDetails/0/PaymentMethod}"/>
+                            
+                            <Label text="{i18n>bankAccount}"/>
+                            <Text text="{detail>/PaymentDetails/0/BankAccount}"/>
+                            
+                            <Label text="{i18n>taxIndicator}"/>
+                            <Text text="{path: 'detail>/PaymentDetails/0/TaxIndicator', formatter: '.formatter.taxIndicatorText'}"/>
+                            
+                            <Label text="{i18n>taxAmount}"/>
+                            <ObjectNumber number="{detail>/PaymentDetails/0/TaxAmount}"/>
+                            
+                            <Label text="{i18n>taxPaymentDate}"/>
+                            <Text text="{path: 'detail>/PaymentDetails/0/TaxPaymentDate', formatter: '.formatter.dateFormat'}"/>
+                            
+                            <Label text="{i18n>referenceDoc}"/>
+                            <Text text="{detail>/PaymentDetails/0/ReferenceDoc}"/>
+                        </form:content>
+                    </form:SimpleForm>
+                    
+                    <HBox class="sapUiSmallMarginTop" visible="{= !!${detail>/PaymentDetails/0/RetentionCertificateNumber}}">
+                        <Label text="{i18n>retentionCertificate}: "/>
+                        <Link
+                            text="{detail>/PaymentDetails/0/RetentionCertificateNumber}"
+                            press=".onDownloadRetentionCertificate"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </content>
+        
+        <beginButton>
+            <Button
+                text="{i18n>close}"
+                press=".onClosePaymentDialog"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>
