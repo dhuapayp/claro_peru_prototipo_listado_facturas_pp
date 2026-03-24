@@ -26,14 +26,23 @@
                     <!-- Supplier Header -->
                     <HBox class="claro-supplier-header sapUiSmallMarginBottom" alignItems="Center" wrap="Wrap">
                         <core:Icon src="sap-icon://building" size="2rem" color="#DA291C" class="sapUiSmallMarginEnd"/>
-                        <VBox class="sapUiSmallMarginEnd claro-label-bold">
+                        <!-- Mobile: razón social + RUC + correo en vertical -->
+                        <VBox class="claro-label-bold claro-mobile-only">
+                            <Title text="{session>/supplierName}" titleStyle="H4"/>
+                            <HBox alignItems="Center" class="sapUiTinyMarginTop">
+                                <Label text="RUC:" class="sapUiTinyMarginEnd" design="Bold"/>
+                                <Text text="{session>/supplierRuc}"/>
+                            </HBox>
+                            <Text text="{session>/supplierEmail}" class="sapUiTinyMarginTop"/>
+                        </VBox>
+                        <!-- Desktop: razón social + RUC + correo en horizontal -->
+                        <VBox class="sapUiSmallMarginEnd claro-label-bold claro-desktop-only">
                             <Title text="{session>/supplierName}" titleStyle="H4"/>
                         </VBox>
-                        <HBox alignItems="Center" class="sapUiSmallMarginEnd">
-                            <Label text="RUC:" class="sapUiTinyMarginEnd" design="Bold"/>
-                            <Text text="{session>/supplierRuc}"/>
+                        <HBox alignItems="Center" class="sapUiSmallMarginEnd claro-desktop-only">
+                            <Text text="{= 'RUC: ' + ${session>/supplierRuc} }"/>
                         </HBox>
-                        <HBox alignItems="Center" class="sapUiSmallMarginEnd">
+                        <HBox alignItems="Center" class="claro-desktop-only">
                             <Text text="{session>/supplierEmail}"/>
                         </HBox>
                     </HBox>
@@ -46,7 +55,7 @@
             <VBox class="sapUiSmallMargin">
 
                 <!-- Filters: SimpleForm con ColumnLayout — 4 cols desktop, 2 tablet, 1 mobile -->
-                <Panel headerText="{i18n>filters}" expandable="true" class="sapUiSmallMarginBottom">
+                <Panel headerText="{i18n>filters}" expandable="true" expanded="true" class="sapUiSmallMarginBottom">
                     <form:SimpleForm
                         editable="true"
                         layout="ColumnLayout"
@@ -167,44 +176,25 @@
                         showSeparators="Inner"
                         class="claro-mobile-only">
                         <items>
-                            <CustomListItem type="Inactive" class="claro-list-item">
-                                <VBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom">
-                                    <!-- Fila 1: Número de factura + Importe -->
-                                    <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
-                                        <Title text="{= ${invoiceListPaged>Series} + '-' + ${invoiceListPaged>DocNumber} }" titleStyle="H6" level="H6"/>
-                                        <ObjectNumber
-                                            number="{path: 'invoiceListPaged>AmountTotal', formatter: '.formatter.numberFormat'}"
-                                            unit="{invoiceListPaged>Currency}"
-                                            emphasized="true"/>
-                                    </HBox>
-                                    <!-- Fila 2: Estado factura + Estado pago -->
-                                    <HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                                        <ObjectStatus
-                                            text="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusText'}"
-                                            state="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusState'}"
-                                            icon="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusIcon'}"
-                                            class="sapUiSmallMarginEnd"/>
-                                        <ObjectStatus
-                                            text="{path: 'invoiceListPaged>PaymentStatus', formatter: '.formatter.paymentStatusText'}"
-                                            state="{path: 'invoiceListPaged>PaymentStatus', formatter: '.formatter.paymentStatusState'}"
-                                            icon="{path: 'invoiceListPaged>PaymentStatus', formatter: '.formatter.paymentStatusIcon'}"/>
-                                    </HBox>
-                                    <!-- Fila 3: Fechas + Indicador fiscal -->
-                                    <HBox wrap="Wrap" alignItems="Center" class="sapUiTinyMarginBottom">
-                                        <ObjectAttribute title="{i18n>issueDate}" text="{path: 'invoiceListPaged>IssueDate', formatter: '.formatter.dateFormat'}" class="sapUiSmallMarginEnd"/>
-                                        <ObjectAttribute title="{i18n>dueDate}" text="{path: 'invoiceListPaged>DueDate', formatter: '.formatter.dateFormat'}" class="sapUiSmallMarginEnd"/>
-                                        <ObjectAttribute title="{i18n>taxIndicator}" text="{path: 'invoiceListPaged>TaxIndicator', formatter: '.formatter.taxIndicatorText'}"/>
-                                    </HBox>
-                                    <!-- Fila 4: Acciones -->
-                                    <HBox alignItems="Center">
-                                        <Button icon="sap-icon://display" type="Transparent" press=".onViewDetail" tooltip="{i18n>viewDetail}"/>
-                                        <Button icon="sap-icon://edit" type="Transparent" press=".onEditInvoice" tooltip="{i18n>edit}"
-                                            visible="{path: 'invoiceListPaged>Status', formatter: '.formatter.canEdit'}"/>
-                                        <Button icon="sap-icon://delete" type="Transparent" press=".onDeleteInvoice" tooltip="{i18n>delete}"
-                                            visible="{path: 'invoiceListPaged>Status', formatter: '.formatter.canDelete'}"/>
-                                    </HBox>
-                                </VBox>
-                            </CustomListItem>
+                            <ObjectListItem
+                                type="Navigation"
+                                press=".onItemPress"
+                                title="{= ${invoiceListPaged>Series} + '-' + ${invoiceListPaged>DocNumber} }"
+                                number="{path: 'invoiceListPaged>AmountTotal', formatter: '.formatter.numberFormat'}"
+                                numberUnit="{invoiceListPaged>Currency}"
+                                numberState="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusState'}"
+                                highlight="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusHighlight'}">
+                                <firstStatus>
+                                    <ObjectStatus
+                                        text="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusText'}"
+                                        state="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusState'}"
+                                        icon="{path: 'invoiceListPaged>Status', formatter: '.formatter.statusIcon'}"/>
+                                </firstStatus>
+                                <attributes>
+                                    <ObjectAttribute title="{i18n>issueDate}" text="{path: 'invoiceListPaged>IssueDate', formatter: '.formatter.dateFormat'}"/>
+                                    <ObjectAttribute title="{i18n>dueDate}" text="{path: 'invoiceListPaged>DueDate', formatter: '.formatter.dateFormat'}"/>
+                                </attributes>
+                            </ObjectListItem>
                         </items>
                     </List>
                     <Toolbar class="claro-pagination-bar">

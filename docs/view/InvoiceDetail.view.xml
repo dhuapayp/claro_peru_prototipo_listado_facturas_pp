@@ -61,6 +61,7 @@
             <Wizard
                 id="registerWizard"
                 class="claro-register-wizard"
+                stepActivate=".onWizardStepActivate"
                 complete=".onWizardComplete">
 
                 <!-- ═══════ PASO 1: Cargar Archivos ═══════ -->

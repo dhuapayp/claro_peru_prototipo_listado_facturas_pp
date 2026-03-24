@@ -176,7 +176,7 @@ sap.ui.define([
 			// ── Build asignaciones for Step 4 ──
 			this._buildAsignaciones(oDetail);
 
-			// ── Advance wizard to last step and run validation ──
+			// ── Advance wizard: always validate all steps, but only jump to last when editing ──
 			var that = this;
 			setTimeout(function () {
 				that._realizarValidacionImportes();
@@ -193,10 +193,11 @@ sap.ui.define([
 					try {
 						[oStep1, oStep2, oStep3, oLastStep].forEach(function (s) { if (s) { s.setValidated(true); } });
 						oWizard.discardProgress(oStep1);
-						oWizard.setCurrentStep(oLastStep);
+						if (!bReadOnly) {
+							oWizard.setCurrentStep(oLastStep);
+						}
 					} catch (e) { /* */ }
 				}
-				that._refreshPendientesHighlight();
 			}, 300);
 		},
 
@@ -969,6 +970,14 @@ sap.ui.define([
 					}
 				}
 			);
+		},
+
+		onWizardStepActivate: function (oEvent) {
+			var sStepId = oEvent.getParameter("step") && oEvent.getParameter("step").getId();
+			if (sStepId && sStepId.indexOf("wizardStep3") >= 0) {
+				var that = this;
+				setTimeout(function () { that._refreshPendientesHighlight(); }, 150);
+			}
 		},
 
 		onWizardComplete: function () { },

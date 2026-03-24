@@ -9,7 +9,7 @@
         draggable="false"
         resizable="false"
         verticalScrolling="true">
-        <content>
+    <content>
             <form:SimpleForm
                 editable="false"
                 layout="ResponsiveGridLayout"

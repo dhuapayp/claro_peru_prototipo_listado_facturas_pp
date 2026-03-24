@@ -95,6 +95,16 @@ sap.ui.define([
 			return sPaymentStatus === "Abonado" ? "sap-icon://accept" : "sap-icon://pending";
 		},
 
+		statusHighlight: function (sStatus) {
+			switch (sStatus) {
+				case "Contabilizado": return "Success";
+				case "Enviado":       return "Warning";
+				case "Rechazado":     return "Error";
+				case "Registrado":    return "Information";
+				default:              return "None";
+			}
+		},
+
 		/**
 		 * Formatea el indicador de impuesto
 		 * @param {string} sTaxIndicator - Indicador de impuesto
