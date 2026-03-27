@@ -1,0 +1,56 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    
+    <Dialog
+        id="attachmentsDialog"
+        title="{i18n>attachments}"
+        contentWidth="50%">
+        
+        <content>
+            <Table
+                items="{detail>/Attachments}"
+                mode="None">
+                <columns>
+                    <Column width="10em">
+                        <Text text="{i18n>type}"/>
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>fileName}"/>
+                    </Column>
+                    <Column width="12em">
+                        <Text text="{i18n>actions}"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectStatus
+                                text="{detail>Type}"
+                                state="{= ${detail>Type} === 'XML' ? 'Warning' : 'Information'}"/>
+                            <Text text="{detail>FileName}"/>
+                            <HBox>
+                                <Button
+                                    icon="sap-icon://show"
+                                    type="Transparent"
+                                    press=".onViewAttachment"
+                                    tooltip="{i18n>view}"/>
+                                <Button
+                                    icon="sap-icon://download"
+                                    type="Transparent"
+                                    press=".onDownloadAttachment"
+                                    tooltip="{i18n>download}"/>
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        
+        <beginButton>
+            <Button
+                text="{i18n>close}"
+                press=".onCloseAttachmentsDialog"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

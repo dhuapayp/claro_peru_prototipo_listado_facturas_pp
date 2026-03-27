@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices m:DataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="InvoiceService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Invoices" EntityType="InvoiceService.Invoice"/>
+                <EntitySet Name="InvoiceContractItems" EntityType="InvoiceService.InvoiceContractItem"/>
+                <EntitySet Name="InvoicePOItems" EntityType="InvoiceService.InvoicePOItem"/>
+                <EntitySet Name="PaymentDetails" EntityType="InvoiceService.PaymentDetail"/>
+                <EntitySet Name="Attachments" EntityType="InvoiceService.Attachment"/>
+                <AssociationSet Name="Invoice_ContractItems" Association="InvoiceService.Invoice_ContractItems">
+                    <End EntitySet="Invoices" Role="Invoice"/>
+                    <End EntitySet="InvoiceContractItems" Role="ContractItems"/>
+                </AssociationSet>
+                <AssociationSet Name="Invoice_POItems" Association="InvoiceService.Invoice_POItems">
+                    <End EntitySet="Invoices" Role="Invoice"/>
+                    <End EntitySet="InvoicePOItems" Role="POItems"/>
+                </AssociationSet>
+                <AssociationSet Name="Invoice_PaymentDetails" Association="InvoiceService.Invoice_PaymentDetails">
+                    <End EntitySet="Invoices" Role="Invoice"/>
+                    <End EntitySet="PaymentDetails" Role="PaymentDetails"/>
+                </AssociationSet>
+                <AssociationSet Name="Invoice_Attachments" Association="InvoiceService.Invoice_Attachments">
+                    <End EntitySet="Invoices" Role="Invoice"/>
+                    <End EntitySet="Attachments" Role="Attachments"/>
+                </AssociationSet>
+            </EntityContainer>
+            
+            <EntityType Name="Invoice">
+                <Key>
+                    <PropertyRef Name="InvoiceId"/>
+                </Key>
+                <Property Name="InvoiceId" Type="Edm.String" Nullable="false"/>
+                <Property Name="DocType" Type="Edm.String"/>
+                <Property Name="Series" Type="Edm.String"/>
+                <Property Name="DocNumber" Type="Edm.String"/>
+                <Property Name="SupplierRuc" Type="Edm.String"/>
+                <Property Name="SupplierName" Type="Edm.String"/>
+                <Property Name="IssueDate" Type="Edm.DateTime"/>
+                <Property Name="RegisterDate" Type="Edm.DateTime"/>
+                <Property Name="ReceiptDate" Type="Edm.DateTime"/>
+                <Property Name="PostingDate" Type="Edm.DateTime"/>
+                <Property Name="Status" Type="Edm.String"/>
+                <Property Name="Currency" Type="Edm.String"/>
+                <Property Name="AmountBase" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="AmountIGV" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="AmountTotal" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="RetentionPct" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="RetentionAmount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="DetractionPct" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="DetractionAmount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="NetAmount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="TaxIndicator" Type="Edm.String"/>
+                <Property Name="TaxPct" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="TaxAmount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="TaxPaymentDate" Type="Edm.DateTime"/>
+                <Property Name="DueDate" Type="Edm.DateTime"/>
+                <Property Name="ApproxPaymentDate" Type="Edm.DateTime"/>
+                <Property Name="PaymentStatus" Type="Edm.String"/>
+                <Property Name="PaymentDocNumber" Type="Edm.String"/>
+                <Property Name="VoucherNumber" Type="Edm.String"/>
+                <Property Name="AccountingDocType" Type="Edm.String"/>
+                <Property Name="ReferenceDoc" Type="Edm.String"/>
+                <Property Name="Notes" Type="Edm.String"/>
+                <Property Name="AffectedToIGV" Type="Edm.Boolean"/>
+                <NavigationProperty Name="ContractItems" Relationship="InvoiceService.Invoice_ContractItems" FromRole="Invoice" ToRole="ContractItems"/>
+                <NavigationProperty Name="POItems" Relationship="InvoiceService.Invoice_POItems" FromRole="Invoice" ToRole="POItems"/>
+                <NavigationProperty Name="PaymentDetails" Relationship="InvoiceService.Invoice_PaymentDetails" FromRole="Invoice" ToRole="PaymentDetails"/>
+                <NavigationProperty Name="Attachments" Relationship="InvoiceService.Invoice_Attachments" FromRole="Invoice" ToRole="Attachments"/>
+            </EntityType>
+            
+            <EntityType Name="InvoiceContractItem">
+                <Key>
+                    <PropertyRef Name="InvoiceId"/>
+                    <PropertyRef Name="ItemId"/>
+                </Key>
+                <Property Name="InvoiceId" Type="Edm.String" Nullable="false"/>
+                <Property Name="ItemId" Type="Edm.String" Nullable="false"/>
+                <Property Name="Concept" Type="Edm.String"/>
+                <Property Name="BusinessUnitCode" Type="Edm.String"/>
+                <Property Name="BusinessUnitDesc" Type="Edm.String"/>
+                <Property Name="PeriodMonth" Type="Edm.Int32"/>
+                <Property Name="PeriodYear" Type="Edm.Int32"/>
+                <Property Name="ItemText" Type="Edm.String"/>
+                <Property Name="GLAccount" Type="Edm.String"/>
+                <Property Name="GLAccountDesc" Type="Edm.String"/>
+                <Property Name="Amount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="CostCenter" Type="Edm.String"/>
+                <Property Name="FundsCenter" Type="Edm.String"/>
+            </EntityType>
+            
+            <EntityType Name="InvoicePOItem">
+                <Key>
+                    <PropertyRef Name="InvoiceId"/>
+                    <PropertyRef Name="ItemId"/>
+                </Key>
+                <Property Name="InvoiceId" Type="Edm.String" Nullable="false"/>
+                <Property Name="ItemId" Type="Edm.String" Nullable="false"/>
+                <Property Name="PONumber" Type="Edm.String"/>
+                <Property Name="PODate" Type="Edm.DateTime"/>
+                <Property Name="POItem" Type="Edm.String"/>
+                <Property Name="Material" Type="Edm.String"/>
+                <Property Name="ServiceDesc" Type="Edm.String"/>
+                <Property Name="Amount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="Currency" Type="Edm.String"/>
+            </EntityType>
+            
+            <EntityType Name="PaymentDetail">
+                <Key>
+                    <PropertyRef Name="InvoiceId"/>
+                    <PropertyRef Name="PaymentId"/>
+                </Key>
+                <Property Name="InvoiceId" Type="Edm.String" Nullable="false"/>
+                <Property Name="PaymentId" Type="Edm.String" Nullable="false"/>
+                <Property Name="PaymentDoc" Type="Edm.String"/>
+                <Property Name="PaymentDate" Type="Edm.DateTime"/>
+                <Property Name="Voucher" Type="Edm.String"/>
+                <Property Name="InvoiceAmount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="TaxAmount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="NetPaidAmount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="TaxIndicator" Type="Edm.String"/>
+                <Property Name="TaxPaymentDate" Type="Edm.DateTime"/>
+                <Property Name="ReferenceDoc" Type="Edm.String"/>
+                <Property Name="PaymentMethod" Type="Edm.String"/>
+                <Property Name="BankAccount" Type="Edm.String"/>
+                <Property Name="RetentionCertificateNumber" Type="Edm.String"/>
+                <Property Name="RetentionCertificatePdfUrl" Type="Edm.String"/>
+            </EntityType>
+            
+            <EntityType Name="Attachment">
+                <Key>
+                    <PropertyRef Name="InvoiceId"/>
+                    <PropertyRef Name="AttachmentId"/>
+                </Key>
+                <Property Name="InvoiceId" Type="Edm.String" Nullable="false"/>
+                <Property Name="AttachmentId" Type="Edm.String" Nullable="false"/>
+                <Property Name="Type" Type="Edm.String"/>
+                <Property Name="FileName" Type="Edm.String"/>
+                <Property Name="MimeType" Type="Edm.String"/>
+                <Property Name="Url" Type="Edm.String"/>
+            </EntityType>
+            
+            <Association Name="Invoice_ContractItems">
+                <End Type="InvoiceService.Invoice" Multiplicity="1" Role="Invoice"/>
+                <End Type="InvoiceService.InvoiceContractItem" Multiplicity="*" Role="ContractItems"/>
+            </Association>
+            <Association Name="Invoice_POItems">
+                <End Type="InvoiceService.Invoice" Multiplicity="1" Role="Invoice"/>
+                <End Type="InvoiceService.InvoicePOItem" Multiplicity="*" Role="POItems"/>
+            </Association>
+            <Association Name="Invoice_PaymentDetails">
+                <End Type="InvoiceService.Invoice" Multiplicity="1" Role="Invoice"/>
+                <End Type="InvoiceService.PaymentDetail" Multiplicity="*" Role="PaymentDetails"/>
+            </Association>
+            <Association Name="Invoice_Attachments">
+                <End Type="InvoiceService.Invoice" Multiplicity="1" Role="Invoice"/>
+                <End Type="InvoiceService.Attachment" Multiplicity="*" Role="Attachments"/>
+            </Association>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
