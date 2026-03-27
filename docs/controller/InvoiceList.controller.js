@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
     "sap/m/MessageToast",
-    "../util/formatter"
-], function (Controller, JSONModel, MessageBox, MessageToast, formatter) {
+    "../util/formatter",
+    "../service/DemoTourService"
+], function (Controller, JSONModel, MessageBox, MessageToast, formatter, DemoTourService) {
     "use strict";
 
     return Controller.extend("claro.com.listadofacturas.controller.InvoiceList", {
@@ -136,12 +137,16 @@ sap.ui.define([
         onItemPress: function (oEvent) {
             var oContext = oEvent.getSource().getBindingContext("invoiceListPaged");
             var sInvoiceId = oContext.getProperty("InvoiceId");
+            window.DemoTourCurrentInvoiceId = sInvoiceId;
+            if (window.DemoTour) { window.DemoTour.onUserAction("abrirDetalle"); }
             this._oRouter.navTo("InvoiceDetail", { invoiceId: sInvoiceId });
         },
 
         onViewDetail: function (oEvent) {
             var oContext = oEvent.getSource().getBindingContext("invoiceListPaged");
             var sInvoiceId = oContext.getProperty("InvoiceId");
+            window.DemoTourCurrentInvoiceId = sInvoiceId;
+            if (window.DemoTour) { window.DemoTour.onUserAction("abrirDetalle"); }
             this._oRouter.navTo("InvoiceDetail", { invoiceId: sInvoiceId });
         },
 
@@ -208,6 +213,10 @@ sap.ui.define([
                     oSpreadsheet.destroy();
                 });
             }.bind(this));
+        },
+
+        onStartDemoTour: function () {
+            DemoTourService.start(this._oRouter);
         }
     });
 });

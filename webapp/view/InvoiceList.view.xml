@@ -15,7 +15,10 @@
                 <f:heading>
                     <Title text="{i18n>invoiceListTitle}" titleStyle="H3"/>
                 </f:heading>
-                <f:actions/>
+                <f:actions>
+                    <Button id="btnIniciarDemo" text="Demo Tour" icon="sap-icon://play" type="Emphasized"
+                        press="onStartDemoTour" tooltip="Iniciar Demo Tour interactivo"/>
+                </f:actions>
             </f:DynamicPageTitle>
         </f:title>
 
